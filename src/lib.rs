@@ -57,7 +57,12 @@ pub enum SpecialKey {
 
 pub enum KeyPress {
     Special(SpecialKey),
-    AlphaNumeric(char)
+    Displayable(char)
 }
 
-pub trait ConsoleInput: Iterator<KeyPress> { }
+pub enum Update {
+    Key(KeyPress),
+    Resize(uint, uint)
+}
+
+pub trait ConsoleInput: Iterator<Update> { }
