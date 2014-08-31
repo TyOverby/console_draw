@@ -55,13 +55,9 @@ pub enum SpecialKey {
     Esc, Space
 }
 
-pub enum KeyPress {
-    Special(SpecialKey),
-    Character(char)
-}
-
 pub enum Update {
-    Key(KeyPress),
+    Character(char),
+    Special(SpecialKey),
     Resize(uint, uint)
 }
 
