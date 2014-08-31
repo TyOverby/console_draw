@@ -65,6 +65,4 @@ pub enum Update {
     Resize(uint, uint)
 }
 
-pub trait ConsoleInput {
-    fn poll_event(&mut self) -> Option<Update>;
-}
+pub trait ConsoleInput: Iterator<Update> { }
