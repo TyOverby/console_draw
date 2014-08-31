@@ -1,3 +1,4 @@
+#[deriving(Show, PartialEq, Eq)]
 pub enum Color {
     Black,
     Red,
@@ -10,6 +11,7 @@ pub enum Color {
     Custom(uint, uint, uint)
 }
 
+#[deriving(Show, PartialEq, Eq)]
 pub enum Modifier {
     Bold,
     Underline,
@@ -47,6 +49,7 @@ pub trait ConsoleCanvas {
     }
 }
 
+#[deriving(Show, PartialEq, Eq)]
 pub enum SpecialKey {
     F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
     Insert, Delete, Home, End, PgUp, PgDown, ArrowUp,
@@ -55,6 +58,7 @@ pub enum SpecialKey {
     Esc, Space
 }
 
+#[deriving(Show, PartialEq, Eq)]
 pub enum Update {
     Character(char),
     Special(SpecialKey),
