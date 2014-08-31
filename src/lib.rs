@@ -24,8 +24,11 @@ pub trait ConsoleCanvas {
     fn clear_modifiers(&mut self);
     fn supports_custom_colors(&self) -> bool;
     fn present(&mut self);
+    fn width(&self) -> uint;
+    fn height(&self) -> uint;
 
-    fn draw(&mut self, x: uint, y: uint, text: &str) {
+    fn draw<S: Str>(&mut self, x: uint, y: uint, text: &S) {
+        let text = text.as_slice();
         let mut x = x;
         for c in text.chars() {
             self.draw_char(x, y, c);
