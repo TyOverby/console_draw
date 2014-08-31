@@ -12,7 +12,6 @@ pub enum Color {
 
 pub enum Modifier {
     Bold,
-    Italic,
     Underline,
     TextColor(Color),
     BackgroundColor(Color)
@@ -24,6 +23,7 @@ pub trait ConsoleCanvas {
     fn add_modifier(&mut self, modifier: &Modifier);
     fn clear_modifiers(&mut self);
     fn supports_custom_colors(&self) -> bool;
+    fn present(&mut self);
 
     fn draw(&mut self, x: uint, y: uint, text: &str) {
         let mut x = x;
