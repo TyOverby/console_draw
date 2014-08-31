@@ -27,7 +27,7 @@ pub trait ConsoleCanvas {
     fn width(&self) -> uint;
     fn height(&self) -> uint;
 
-    fn draw<S: Str>(&mut self, x: uint, y: uint, text: &S) {
+    fn draw<S: Str>(&mut self, x: uint, y: uint, text: S) {
         let text = text.as_slice();
         let mut x = x;
         for c in text.chars() {
