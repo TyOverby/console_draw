@@ -24,6 +24,7 @@ pub trait ConsoleCanvas {
     fn clear_modifiers(&mut self);
     fn supports_custom_colors(&self) -> bool;
     fn present(&mut self);
+    fn cursor(&mut self, x: uint, y: uint);
     fn width(&self) -> uint;
     fn height(&self) -> uint;
 
