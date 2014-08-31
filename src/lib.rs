@@ -57,7 +57,7 @@ pub enum SpecialKey {
 
 pub enum KeyPress {
     Special(SpecialKey),
-    Displayable(char)
+    Character(char)
 }
 
 pub enum Update {
@@ -65,4 +65,6 @@ pub enum Update {
     Resize(uint, uint)
 }
 
-pub trait ConsoleInput: Iterator<Update> { }
+pub trait ConsoleInput {
+    fn poll_event(&mut self) -> Option<Update>;
+}
