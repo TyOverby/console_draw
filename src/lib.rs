@@ -98,10 +98,12 @@ pub enum SpecialKey {
     Esc, Space
 }
 
+// An update from the console.  Currently provides events
+// for keyboard keys, and console resizing.
 #[deriving(Show, PartialEq, Eq, Hash)]
 pub enum Update {
     /// A keyboard update that translates directly
-    /// to a character.
+    /// to an ASCII character.
     Character(char),
     /// A keyboard update that comes from a
     /// modifier or otherwise special keyboard key.
