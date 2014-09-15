@@ -36,7 +36,7 @@ pub trait ConsoleCanvas {
 
     /// Adds a modifier to the console for all text printed
     /// afterwards.
-    fn set(&mut self, modifier: &Modifier);
+    fn set(&mut self, modifier: Modifier);
 
     /// Creates a new state for applying modifiers.
     fn push_state(&mut self);
