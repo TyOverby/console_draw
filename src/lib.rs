@@ -36,11 +36,14 @@ pub trait ConsoleCanvas {
 
     /// Adds a modifier to the console for all text printed
     /// afterwards.
-    fn add_modifier(&mut self, modifier: &Modifier);
+    fn set(&mut self, modifier: &Modifier);
 
-    /// Removes all modifiers from the console, returning it
-    /// back to the default state.
-    fn clear_modifiers(&mut self);
+    /// Creates a new state for applying modifiers.
+    fn push_state(&mut self);
+
+    /// Returns the modifiers back to the state that they
+    /// were in when `push_state()` was called.
+    fn pop_state(&mut self);
 
     /// Returns true if this console has support for custom
     /// colors instead of the basic black, red, green, etc.
@@ -73,17 +76,12 @@ pub trait ConsoleCanvas {
         }
     }
 
-    /// With a set of modifiers, returns a closure that has
-    /// a new Console that is has the modifiers set for the
-    /// duration of the closure.  Afterwards the modifiers
-    /// state is cleared.
-    fn with_modifiers(&mut self, modifiers: &[Modifier],
-                      f: |&mut Self| -> ()) {
-        for m in modifiers.iter() {
-            self.add_modifier(m);
-        }
+    /// Automatically handles `push` and `pop` for
+    /// the modifier state.
+    fn with_state(&mut self, f: |&mut Self| -> ()) {
+        self.push_state();
         f(self);
-        self.clear_modifiers();
+        self.pop_state();
     }
 }
 
